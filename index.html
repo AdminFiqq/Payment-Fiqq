@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Payment Methods - Fiqq Market</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon" id="themeIcon"></i>
+        <span id="themeText">Mode Gelap</span>
+    </button>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="img/Logo-Market.jpg" alt="Fiqq Market Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>Fiqq Market</h1>
+                    <p class="subtitle">Pembayaran Nasional - SATU QRIS UNTUK SEMUA</p>
+                </div>
+            </div>
+            
+            <div class="theme-switch-container">
+                <label class="switch">
+                    <input type="checkbox" id="themeSwitch">
+                    <span class="slider round"></span>
+                </label>
+                <span class="theme-label" id="themeLabel">Mode Terang</span>
+            </div>
+        </header>
+        
+        <main>
+            <div class="payment-container">
+                <!-- QRIS Payment Method -->
+                <div class="payment-method">
+                    <div class="payment-header">
+                        <div class="payment-icon qris">
+                            <img src="img/Logo-Qris.jpg" alt="QRIS Logo" class="icon-img">
+                        </div>
+                        <div>
+                            <h2>QRIS Payment</h2>
+                            <p>Pembayaran Nasional</p>
+                        </div>
+                    </div>
+                    
+                    <div class="qris-container">
+                        <div class="qris-image">
+                            <img src="img/Qris.jpg" alt="QRIS Code" class="qris-img">
+                        </div>
+                        <div class="qris-info">
+                            <p><strong>NMID:</strong> ID1025459740441</p>
+                            <p><strong>A01</strong></p>
+                            <p class="small-text">Scan dengan aplikasi penyelenggara di: <br>www.aspi-qris.id</p>
+                            <p class="small-text">Dicetak oleh: 93600915</p>
+                            <p class="small-text">Versi cetak: 1.0.02.01.26</p>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn-download" onclick="downloadQRIS()">
+                            <i class="fas fa-download"></i> Download QR
+                        </button>
+                        <button class="btn-scan" onclick="showQRScanner()">
+                            <i class="fas fa-camera"></i> Tampilkan QR
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Bank Transfer Method -->
+                <div class="payment-method">
+                    <div class="payment-header">
+                        <div class="payment-icon bank">
+                            <img src="img/Logo-Bank.jpg" alt="Bank Logo" class="icon-img">
+                        </div>
+                        <div>
+                            <h2>Bank Transfer</h2>
+                            <p>Transfer via Bank BCA</p>
+                        </div>
+                    </div>
+                    
+                    <div class="account-details">
+                        <div class="bank-info">
+                            <div class="bank-logo-display">
+                                <img src="img/Logo-Bca.jpg" alt="BCA Logo" class="bank-logo-img">
+                            </div>
+                            <div class="account-info">
+                                <p><strong>No. Rekening:</strong></p>
+                                <div class="account-number" id="bcaAccount">
+                                    <span class="account-number-text">1012091901</span>
+                                    <button class="copy-btn-small" onclick="copyToClipboard('1012091901', 'Nomor rekening BCA berhasil disalin!')">
+                                        <i class="far fa-copy"></i>
+                                    </button>
+                                </div>
+                                <p><strong>Atas Nama:</strong> T******* R*****</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="instructions">
+                        <h4><i class="fas fa-info-circle"></i> Instruksi Transfer:</h4>
+                        <ol>
+                            <li>Buka aplikasi mobile banking BCA</li>
+                            <li>Pilih menu transfer ke rekening BCA</li>
+                            <li>Masukkan nomor rekening di atas</li>
+                            <li>Masukkan jumlah yang sesuai</li>
+                            <li>Konfirmasi dan selesaikan transaksi</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <!-- E-Wallet Method -->
+                <div class="payment-method">
+                    <div class="payment-header">
+                        <div class="payment-icon ewallet">
+                            <img src="img/Logo-Ewallet.jpg" alt="E-Wallet Logo" class="icon-img">
+                        </div>
+                        <div>
+                            <h2>E-Wallet</h2>
+                            <p>Gopay, OVO, Dana</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ewallet-logos">
+                        <div class="ewallet-logo">
+                            <img src="img/Logo-Gopay.jpg" alt="Gopay Logo" class="ewallet-img">
+                            <span>Gopay</span>
+                        </div>
+                        <div class="ewallet-logo">
+                            <img src="img/Logo-Ovo.jpg" alt="OVO Logo" class="ewallet-img">
+                            <span>OVO</span>
+                        </div>
+                        <div class="ewallet-logo">
+                            <img src="img/Logo-Dana.jpg" alt="Dana Logo" class="ewallet-img">
+                            <span>Dana</span>
+                        </div>
+                    </div>
+                    
+                    <div class="account-details">
+                        <div class="account-info">
+                            <p><strong>No. Telepon:</strong></p>
+                            <div class="account-number" id="ewalletAccount">
+                                <span class="account-number-text">081235719904</span>
+                                <button class="copy-btn-small" onclick="copyToClipboard('081235719904', 'Nomor telepon e-wallet berhasil disalin!')">
+                                    <i class="far fa-copy"></i>
+                                </button>
+                            </div>
+                            <p><strong>Atas Nama:</strong> T******* R*****</p>
+                        </div>
+                    </div>
+                    
+                    <div class="instructions">
+                        <h4><i class="fas fa-info-circle"></i> Instruksi Pembayaran:</h4>
+                        <ol>
+                            <li>Buka aplikasi Gopay/OVO/Dana</li>
+                            <li>Pilih menu transfer/ke rekening</li>
+                            <li>Masukkan nomor telepon di atas</li>
+                            <li>Masukkan jumlah yang sesuai</li>
+                            <li>Konfirmasi pembayaran</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-instructions">
+                <h3><i class="fas fa-credit-card"></i> Panduan Pembayaran</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-mouse-pointer"></i>
+                        </div>
+                        <h4>Pilih Metode</h4>
+                        <p>Pilih salah satu metode pembayaran yang tersedia</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <h4>Salin/Scan</h4>
+                        <p>Salin nomor rekening atau scan kode QRIS</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h4>Transfer</h4>
+                        <p>Lakukan transfer sesuai nominal transaksi</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>Konfirmasi</h4>
+                        <p>Simpan bukti transfer dan konfirmasi pembayaran</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="important-notes">
+                <h3><i class="fas fa-exclamation-triangle"></i> Catatan Penting</h3>
+                <ul>
+                    <li>Pastikan nomor rekening/telepon sudah sesuai sebelum transfer</li>
+                    <li>Simpan bukti pembayaran untuk konfirmasi</li>
+                    <li>Pembayaran via QRIS menggunakan standar nasional</li>
+                    <li>Verifikasi penerima sebelum melakukan transfer</li>
+                    <li>Untuk bantuan, hubungi customer service kami</li>
+                </ul>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/Logo-Market.jpg" alt="Fiqq Market Logo" class="footer-logo-img">
+                    <div>
+                        <h4>Fiqq Market</h4>
+                        <p>Pembayaran Nasional</p>
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <p><i class="fas fa-shield-alt"></i> Pembayaran Aman dan Terpercaya</p>
+                    <p><i class="fas fa-qrcode"></i> SATU QRIS UNTUK SEMUA</p>
+                    <p class="footer-link"><i class="fas fa-globe"></i> Cek aplikasi penyelenggara di: www.aspi-qris.id</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2023 Fiqq Market. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- QR Scanner Modal -->
+    <div class="modal" id="qrScannerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Kode QRIS Fiqq Market</h3>
+                <span class="close" onclick="closeQRScanner()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="qris-display">
+                    <div class="qr-code-display">
+                        <img src="img/Qris.jpg" alt="QRIS Code" class="qr-img-large">
+                        <div class="qr-info">
+                            <div class="qr-merchant-large">Fiqq Market</div>
+                            <div class="qr-nmid">NMID: ID1025459740441</div>
+                        </div>
+                    </div>
+                    <div class="scan-instruction">
+                        <i class="fas fa-camera"></i>
+                        <p>Buka aplikasi pembayaran Anda dan scan kode QR di atas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-close" onclick="closeQRScanner()">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="notificationText"></span>
+        </div>
+    </div>
+
+    <script src="main/script.js"></script>
+</body>
+</html>
